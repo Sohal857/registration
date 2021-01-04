@@ -5,10 +5,10 @@ from django_countries.fields import CountryField
 
 
 class UserForm(forms.ModelForm):
-    username = forms.CharField(required = False, widget=forms.TextInput())
-    email = forms.CharField(required = False, widget=forms.TextInput())
-    first_name = forms.CharField(required = False, widget=forms.TextInput())
-    last_name = forms.CharField(required = False, widget=forms.TextInput())
+    username = forms.CharField(required = False, label="Username*", widget=forms.TextInput())
+    email = forms.CharField(required = False, label="Email*", widget=forms.TextInput())
+    first_name = forms.CharField(required = False, label="First name*", widget=forms.TextInput())
+    last_name = forms.CharField(required = False, label="Last name*", widget=forms.TextInput())
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
     class Meta():
@@ -25,19 +25,16 @@ class UserForm(forms.ModelForm):
             )
 
 class UserProfileInfoForm(forms.ModelForm):
-    phone_number = forms.CharField(required = False, widget=forms.TextInput())
-    street_address = forms.CharField(required = False, widget=forms.TextInput())
-    city = forms.CharField(required = False, widget=forms.TextInput())
-    zip_code = forms.CharField(required = False, widget=forms.TextInput())
-    country = forms.CharField(required = False, widget=forms.TextInput())
-    stae = forms.CharField(required = False, widget=forms.TextInput())
+    phone_number = forms.CharField(required = False, label="Phone number*", widget=forms.TextInput())
+    street_address = forms.CharField(required = False, label="Street Address*", widget=forms.TextInput())
+    city = forms.CharField(required = False, label="City*", widget=forms.TextInput())
+    zip_code = forms.CharField(required = False, label="Zip code*", widget=forms.TextInput())
+    country = forms.CharField(required = False, label="Country*", widget=forms.TextInput())
+    state = forms.CharField(required = False, label="State/Province*", widget=forms.TextInput())
     class Meta():
         model = UserProfileInfo
         fields = ('company_name','website','phone_number','unit','street_address','city','zip_code','country','state')
-        labels  = {
-            'unit':'Appartment/Unit no',
-            'state':'State/Province',
-        }
+
         # widgets = {
         #
         #     'website' : forms.TextInput(),

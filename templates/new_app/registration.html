@@ -1,7 +1,9 @@
 {% extends "new_app/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load widget_tweaks %}
 {% block body_block %}
+
   <div class="container">
     <div class="jumbotron">
       {% if registered %}
@@ -9,23 +11,26 @@
       {% else %}
         <h1>Register Here!</h1>
         <h3></h3>
-
         <form name = "myform" enctype="multipart/form-data" method="POST" onsubmit="return validateform()">
           {% csrf_token %}
           <h4>Personal information</h4>
           <hr style="border-top:2px solid #ccc; margin-top: 0px"/>
           <div class="form-row">
-            <div class="form-group col-md-6 mb-0">
+            <div class="form-group col-md-6 mb-0" >
               {{ user_form.username|as_crispy_field }}
+              <span id = "message1" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-6 mb-0">
               {{ user_form.email|as_crispy_field }}
+              <span id = "message2" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-6 mb-0">
               {{ user_form.first_name|as_crispy_field }}
+              <span id = "message3" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-6 mb-0">
               {{ user_form.last_name|as_crispy_field }}
+              <span id = "message4" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-6 mb-0">
               {{ user_form.password|as_crispy_field }}
@@ -35,12 +40,15 @@
             </div>
             <div class="form-group col-md-6 mb-0">
               {{ profile_form.company_name|as_crispy_field }}
+              <span id = "message" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-6 mb-0">
               {{ profile_form.website|as_crispy_field }}
+              <span id = "message" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-6 mb-0">
               {{ profile_form.phone_number|as_crispy_field }}
+              <span id = "message5" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
           </div>
           <div class="">
@@ -50,21 +58,26 @@
           <div  class="form-row">
             <div class="form-group col-md-4 mb-0">
               {{ profile_form.country|as_crispy_field }}
+              <span id = "message6" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-4 mb-0">
               {{ profile_form.unit|as_crispy_field }}
             </div>
             <div class="form-group col-md-4 mb-0">
               {{ profile_form.street_address|as_crispy_field }}
+              <span id = "message7" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-4 mb-0">
               {{ profile_form.city|as_crispy_field }}
+              <span id = "message8" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-4 mb-0">
               {{ profile_form.zip_code|as_crispy_field }}
+              <span id = "message9" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
             <div class="form-group col-md-4 mb-0">
               {{ profile_form.state|as_crispy_field }}
+              <span id = "message10" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Sign up</button>
