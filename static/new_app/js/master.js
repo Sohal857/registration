@@ -4,9 +4,10 @@ var email=document.myform.email.value;
 var first_name=document.myform.first_name.value;
 var last_name=document.myform.last_name.value;
 var password=document.myform.password.value;
+var confirm_password=document.myform.confirm_password.value;
 var phone_number=document.myform.phone_number.value;
-var country=document.myform.country.value;
 var street_address=document.myform.street_address.value;
+var country=document.myform.country.value;
 var city=document.myform.city.value;
 var zip_code=document.myform.zip_code.value;
 var state=document.myform.state.value;
@@ -14,8 +15,6 @@ var state=document.myform.state.value;
 var special = /[^a-zA-Z\d]/;
 var letter = /[a-zA-Z]/;
 var number = /[0-9]/;
-
-
 
 if (username==null || username==""){
   document.getElementById("message1").innerHTML = "*This field is required";
@@ -35,6 +34,10 @@ else if(last_name==null || last_name==""){
 }
 else if(password.length<8 || !letter.test(password)|| !number.test(password)|| !special.test(password)){
   alert("Password must be filled and it should contain at least 8 characters, one lowercase character, one uppercase character, one special character, one numeric character!");
+  return false;
+}
+else if(password!=confirm_password){
+  alert("password must be same!");
   return false;
 }
 // / || password.match == /[a-z]/ || password.match == /[A-Z]/ || password.match == /[0-9]/ || password.match == /[^a-zA-Z\d]/
@@ -65,23 +68,88 @@ else if(state==null || state==""){
 return true;
 }
 
-// function random_function()
-//  {
-//      var a=document.getElementById("input").value;
-//      if(a==="CANADA")
-//      {
-//          var arr=["Alberta","Manitoba"];
-//      }
-//      else if(a==="USA")
-//      {
-//          var arr=["Washington","Texas","New York"];
-//      }
-//
-//      var string="";
-//
-//      for(i=0;i<arr.length;i++)
-//      {
-//          string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
-//      }
-//      document.getElementById("output").innerHTML=string;
-//  }
+var countryObject = {
+  "Canada": {
+    "Alberta": [],
+    "British Columbia": [],
+    "Manitoba": [],
+    "New Brunswick": [],
+    "Newfoundland": [],
+    "Northwest Territories": [],
+    "Nova Scotia": [],
+    "Nunavut": [],
+    "Ontario": [],
+    "Prince Edward Island": [],
+    "Quebec": [],
+    "Saskatchewan": [],
+    "Yukon": [],
+  },
+  "USA": {
+    "Alabama": [],
+    "Alaska": [],
+    "Arizona": [],
+    "Arkansas": [],
+    "California": [],
+    "Colorado": [],
+    "Connecticut": [],
+    "Delaware": [],
+    "District of Columbia": [],
+    "Florida": [],
+    "Georgia": [],
+    "Hawaii": [],
+    "Idaho": [],
+    "Illinois": [],
+    "Indiana": [],
+    "Iowa": [],
+    "Kansas": [],
+    "Kentucky": [],
+    "Louisiana": [],
+    "Maine": [],
+    "Maryland": [],
+    "Massachusetts": [],
+    "Michigan": [],
+    "Minnesota": [],
+    "Mississippi": [],
+    "Missouri": [],
+    "Montana": [],
+    "Nebraska": [],
+    "Nevada": [],
+    "New Hampshire": [],
+    "New Jersey": [],
+    "New Mexico": [],
+    "New York": [],
+    "North Carolina": [],
+    "North Dakota": [],
+    "Ohio": [],
+    "Oklahoma": [],
+    "Oregon": [],
+    "Pennsylvania": [],
+    "Rhode Island": [],
+    "South Carolina": [],
+    "South Dakota": [],
+    "Tennessee": [],
+    "Texas": [],
+    "Utah": [],
+    "Vermont": [],
+    "Virginia": [],
+    "Washington": [],
+    "West Virginia": [],
+    "Wisconsin": [],
+    "Wyoming": [],
+  },
+}
+window.onload = function() {
+  var countries = document.getElementById("country");
+  var states = document.getElementById("state");
+  for (var x in countryObject) {
+    countries.options[countries.options.length] = new Option(x, x);
+  }
+  countries.onchange = function() {
+    //empty state - dropdowns
+    states.length = 1;
+    //display correct values
+    for (var y in countryObject[this.value]) {
+      states.options[states.options.length] = new Option(y, y);
+    }
+  }
+}

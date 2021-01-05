@@ -56,9 +56,18 @@
             <hr style="border-top:2px solid #ccc; margin-top: 0px"/>
           </div>
           <div  class="form-row">
-            <div class="form-group col-md-4 mb-0">
-              {{ profile_form.country|as_crispy_field }}
-              <span id = "message6" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
+          <div id="div_id_country" class="control-group col-md-4 mb-0">
+              <label for="id_country" class="control-label">Country*</label>
+              <div class="controls" style="padding: 6px;background-color: white;border-radius: 4px;">
+                <select name="country" id="country"  style="background-color: #fff0;border: 0px solid white;padding-right: 192px;">
+                  <option value="" selected="selected" >Select Country</option>
+                </select>
+                <span id = "message6" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
+              <!--<input class="form-control padding-right: 201px;
+background-color: #fff0;
+border: 0px solid white;
+custom-class"       padding-right: 201px;background-color: #ffffff00;border: 0px solid white;id="id_country" maxlength="254" name="country" required="required" type="country" />-->
+              </div>
             </div>
             <div class="form-group col-md-4 mb-0">
               {{ profile_form.unit|as_crispy_field }}
@@ -75,13 +84,20 @@
               {{ profile_form.zip_code|as_crispy_field }}
               <span id = "message9" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
             </div>
-            <div class="form-group col-md-4 mb-0">
-              {{ profile_form.state|as_crispy_field }}
-              <span id = "message10" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
+            <div id="div_id_state" class="control-group col-md-4 mb-0">
+                <label for="id_state" class="control-label">State/Province*</label>
+                <div class="controls"  style="padding: 6px;background-color: white;border-radius: 4px;">
+                  <select name="select" id="state"  style="background-color: #fff0;border: 0px solid white;padding-right: 116px;">
+                    <option value="" selected="selected">Please select country first</option>
+                  </select>
+                  <span id = "message10" style="color:red;position:absolute; margin-top:-18px; font-size:12px"> </span>
+                  <!-- <input class="form-control custom-class" id="id_email" maxlength="254" name="email" required="required" type="email" /> -->
+                </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Sign up</button>
+          <Button type="submit"  class="btn btn-primary">Sign up</button>
         </form>
+
       {% endif %}
 
     </div>
